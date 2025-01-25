@@ -52,12 +52,14 @@ public class OnLeaveHelper {
         //Change First Person before screenshot
         client.options.setPerspective(Perspective.FIRST_PERSON);
 
-        var debugHudAccess = (DebugHudAccesor) client.inGameHud.getDebugHud();
-
         //Disable F3 menu due to profiler crashing
-        debugHudAccess.seamless$showDebugHud(false);
-        debugHudAccess.seamless$renderingAndTickChartsVisible(false);
-        debugHudAccess.seamless$renderingChartVisible(false);
+        if(MinecraftClient.getInstance().getDebugHud().shouldShowDebugHud()){
+            MinecraftClient.getInstance().getDebugHud().toggleDebugHud();
+        }
+//        var debugHudAccess = (DebugHudAccesor) client.inGameHud.getDebugHud();
+//        debugHudAccess.seamless$showDebugHud(false);
+//        debugHudAccess.seamless$renderingAndTickChartsVisible(false);
+//        debugHudAccess.seamless$renderingChartVisible(false);
 
         var resolution = SeamlessLoadingScreenConfig.get().resolution;
 
